@@ -147,6 +147,9 @@ $(document).ready(function () {
     e.preventDefault(); // a태그 링크이동 막기
     $(`.${data}`).stop(false, true); // 배경이미지가 바뀌는 중이었다면 움직임 멈추기
 
+    $tabBtn.removeClass('on'); // 다른 메뉴들 글자 기본으로
+    $(this).addClass('on'); // 클릭한 메뉴 두껍게
+
     data = $(this).data('tab'); // data값 가져오기
     // console.log(data);
 
