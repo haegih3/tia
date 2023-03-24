@@ -141,6 +141,7 @@ $(document).ready(function () {
   /* tab _________________________________________________________ */ 
   let $allTabBGimg = $(".tab_visual .tab_bg");
   let $tabBtn = $(".tab li a");
+  let $middleImg = $(".out img");
   let data;
 
   $tabBtn.on('click',function(e){
@@ -149,9 +150,19 @@ $(document).ready(function () {
 
     $tabBtn.removeClass('on'); // 다른 메뉴들 글자 기본으로
     $(this).addClass('on'); // 클릭한 메뉴 두껍게
-
     data = $(this).data('tab'); // data값 가져오기
     // console.log(data);
+
+    // 가운데 이미지 바꾸기
+    $middleImg.each(function(index, item){
+      console.log(index);
+      let middleData = $(item).attr('alt');
+      if (middleData == data) {
+        $(item).addClass('on');
+      } else {
+        $(item).removeClass('on');
+      }
+    });
 
     $(`.${data}`).css('z-index', '1'); // 선택된 이미지 맨앞으로 보내기
     $allTabBGimg.not(`.${data}`).css('z-index', '0'); // 나머지 이미지 뒤로 보내기
